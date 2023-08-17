@@ -12,10 +12,12 @@
             <service_fmri value="svc:/milestone/multi-user-server" />
         </dependent>
         <exec_method timeout_seconds="60" type="method" name="refresh"
-                     exec="var/ossec/installation_scripts/postinstall.sh"/>
+                     exec="var/ossec/bin/wazuh-control restart"/>
         <exec_method timeout_seconds="60" type="method" name="start"
-                     exec="var/ossec/installation_scripts/postinstall.sh"/>
-        <property_group type="framework" name="startd">
+                     exec="var/ossec/bin/wazuh-control start"/>
+        <exec_method timeout_seconds="60" type="method" name="stop"
+                     exec="var/ossec/bin/wazuh-control stop"/>
+         <property_group type="framework" name="startd">
                      <propval type="astring" name="duration" value="transient"/>
         </property_group>
         <instance enabled="true" name="default"> </instance>
